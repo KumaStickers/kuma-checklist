@@ -1,247 +1,817 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🐻 Kuma Launch Checklist</title>
+<title>🐻 KumaStickers — Complete Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #fdf8f5;
-    color: #3c2820;
-    min-height: 100vh;
-    padding: 0 0 60px;
+  :root {
+    --coral: #E8785A;
+    --coral-light: #fde8de;
+    --coral-dark: #c45a3e;
+    --cream: #fdf8f5;
+    --dark: #2c1a10;
+    --mid: #7a5540;
+    --muted: #b09080;
+    --border: #f0e8e0;
+    --white: #ffffff;
+    --green: #1a7a45;
+    --green-light: #d4f5e2;
+    --blue: #2563eb;
+    --blue-light: #e6f1fb;
+    --purple: #7c3aed;
+    --purple-light: #ede9fe;
+    --amber: #b07d1a;
+    --amber-light: #fff8e1;
+    --teal: #0f6e56;
+    --teal-light: #e1f5ee;
   }
-  header {
-    background: #fff;
-    border-bottom: 1px solid #f0ece8;
-    padding: 20px 20px 16px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  header h1 { font-size: 20px; font-weight: 800; color: #3c2820; }
-  header p  { font-size: 13px; color: #aaa; margin-top: 2px; }
-  .summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 16px 16px 0;
-  }
-  .stat {
-    background: #fff;
-    border: 1px solid #f0ece8;
-    border-radius: 12px;
-    padding: 12px;
-    text-align: center;
-  }
-  .stat-num { font-size: 24px; font-weight: 800; color: #3c2820; }
-  .stat-lbl { font-size: 11px; color: #aaa; margin-top: 2px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-  .reset-btn {
-    display: block;
-    text-align: right;
-    font-size: 12px;
-    color: #ccc;
-    cursor: pointer;
-    padding: 10px 20px 4px;
-    text-decoration: underline;
-    background: none;
-    border: none;
-    width: 100%;
-  }
-  .reset-btn:hover { color: #e8785a; }
-  .wrap { padding: 0 12px; }
-  .day-header {
-    padding: 14px 16px;
-    border-radius: 14px;
-    margin: 16px 0 6px;
-    user-select: none;
-  }
-  .day-header h2 { font-size: 15px; font-weight: 800; color: #fff; }
-  .day-header p  { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 2px; }
-  .day-meta { display: flex; justify-content: space-between; align-items: center; }
-  .count-badge {
-    font-size: 12px;
-    padding: 3px 10px;
-    border-radius: 99px;
-    background: rgba(255,255,255,0.25);
-    color: #fff;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-  .progress-wrap {
-    margin-top: 10px;
-    background: rgba(255,255,255,0.25);
-    border-radius: 99px;
-    height: 4px;
-  }
-  .progress-bar {
-    height: 4px;
-    border-radius: 99px;
-    background: rgba(255,255,255,0.9);
-    transition: width 0.3s ease;
-  }
-  .items { margin-bottom: 4px; }
-  .item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 10px 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: background 0.1s;
-  }
-  .item:hover { background: #fff; border-color: #f0ece8; }
-  .item.done .label { text-decoration: line-through; color: #bbb; }
-  .item.done .sub   { color: #ccc; }
-  .item.done { opacity: 0.6; }
-  .checkbox {
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
-    border: 2px solid #ddd;
-    flex-shrink: 0;
-    margin-top: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-  }
-  .checkbox svg { display: none; }
-  .checkbox.checked svg { display: block; }
-  .label { font-size: 14px; color: #3c2820; line-height: 1.5; font-weight: 600; }
-  .sub   { font-size: 12px; color: #888; margin-top: 2px; line-height: 1.5; }
 
-  @media (prefers-color-scheme: dark) {
-    body    { background: #1a1410; color: #f0e8e0; }
-    header  { background: #221a14; border-color: #3a2820; }
-    header h1 { color: #f0e8e0; }
-    .stat   { background: #221a14; border-color: #3a2820; }
-    .stat-num { color: #f0e8e0; }
-    .item:hover { background: #221a14; border-color: #3a2820; }
-    .label  { color: #f0e8e0; }
-    .item.done .label { color: #665544; }
-    .item.done .sub   { color: #554433; }
-    .checkbox { border-color: #554433; }
-    .count-badge { background: rgba(0,0,0,0.3); }
-  }
+- { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+font-family: ‘Nunito’, sans-serif;
+background: var(–cream);
+color: var(–dark);
+padding-bottom: 80px;
+}
+
+/* ── HEADER ── */
+.site-header {
+background: var(–white);
+border-bottom: 1.5px solid var(–border);
+padding: 0 20px;
+position: sticky;
+top: 0;
+z-index: 100;
+}
+.header-inner {
+max-width: 680px;
+margin: 0 auto;
+padding: 16px 0 0;
+}
+.header-top {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 14px;
+}
+.header-title h1 {
+font-family: ‘Fraunces’, serif;
+font-size: 22px;
+font-weight: 700;
+color: var(–dark);
+line-height: 1.2;
+}
+.header-title p {
+font-size: 12px;
+color: var(–muted);
+margin-top: 2px;
+font-weight: 600;
+}
+.progress-ring-wrap {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 2px;
+}
+.progress-ring-wrap span {
+font-size: 10px;
+font-weight: 700;
+color: var(–muted);
+letter-spacing: 0.06em;
+text-transform: uppercase;
+}
+.progress-ring {
+width: 52px;
+height: 52px;
+transform: rotate(-90deg);
+}
+.progress-ring circle {
+fill: none;
+stroke-width: 4;
+}
+.ring-bg { stroke: var(–border); }
+.ring-fill {
+stroke: var(–coral);
+stroke-linecap: round;
+stroke-dasharray: 138;
+stroke-dashoffset: 138;
+transition: stroke-dashoffset 0.5s ease;
+}
+.ring-pct {
+position: absolute;
+font-size: 11px;
+font-weight: 800;
+color: var(–coral);
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) rotate(90deg);
+}
+.ring-container { position: relative; width: 52px; height: 52px; }
+
+/* Phase tabs */
+.phase-tabs {
+display: flex;
+gap: 0;
+overflow-x: auto;
+scrollbar-width: none;
+-ms-overflow-style: none;
+padding-bottom: 1px;
+}
+.phase-tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+padding: 8px 14px;
+border: none;
+border-bottom: 3px solid transparent;
+background: none;
+font-family: ‘Nunito’, sans-serif;
+font-size: 12px;
+font-weight: 700;
+color: var(–muted);
+cursor: pointer;
+white-space: nowrap;
+transition: all 0.15s;
+letter-spacing: 0.02em;
+}
+.tab-btn.active {
+color: var(–coral);
+border-bottom-color: var(–coral);
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+max-width: 680px;
+margin: 16px auto 0;
+padding: 0 16px;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+}
+.stat-card {
+background: var(–white);
+border: 1.5px solid var(–border);
+border-radius: 14px;
+padding: 12px;
+text-align: center;
+}
+.stat-num {
+font-size: 26px;
+font-weight: 900;
+color: var(–dark);
+font-family: ‘Fraunces’, serif;
+}
+.stat-lbl {
+font-size: 10px;
+font-weight: 700;
+color: var(–muted);
+text-transform: uppercase;
+letter-spacing: 0.07em;
+margin-top: 2px;
+}
+
+/* ── MAIN CONTENT ── */
+.main {
+max-width: 680px;
+margin: 0 auto;
+padding: 20px 16px 0;
+}
+
+/* ── PHASE SECTION ── */
+.phase { display: none; }
+.phase.active { display: block; }
+
+/* Phase header */
+.phase-header {
+border-radius: 18px;
+padding: 20px 22px;
+margin-bottom: 16px;
+position: relative;
+overflow: hidden;
+}
+.phase-header::before {
+content: ‘’;
+position: absolute;
+top: -20px; right: -20px;
+width: 100px; height: 100px;
+border-radius: 50%;
+background: rgba(255,255,255,0.12);
+}
+.phase-header::after {
+content: ‘’;
+position: absolute;
+bottom: -30px; right: 30px;
+width: 70px; height: 70px;
+border-radius: 50%;
+background: rgba(255,255,255,0.08);
+}
+.phase-label {
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: rgba(255,255,255,0.7);
+margin-bottom: 4px;
+}
+.phase-title {
+font-family: ‘Fraunces’, serif;
+font-size: 20px;
+font-weight: 700;
+color: #fff;
+line-height: 1.2;
+margin-bottom: 4px;
+}
+.phase-machine {
+font-size: 12px;
+font-weight: 600;
+color: rgba(255,255,255,0.75);
+margin-bottom: 14px;
+}
+.phase-progress-wrap {
+background: rgba(255,255,255,0.25);
+border-radius: 99px;
+height: 5px;
+}
+.phase-progress-bar {
+height: 5px;
+border-radius: 99px;
+background: rgba(255,255,255,0.9);
+transition: width 0.35s ease;
+min-width: 5px;
+}
+.phase-count {
+position: absolute;
+top: 20px; right: 22px;
+font-size: 13px;
+font-weight: 800;
+color: rgba(255,255,255,0.85);
+background: rgba(255,255,255,0.18);
+padding: 4px 12px;
+border-radius: 99px;
+}
+
+/* ── SECTION WITHIN PHASE ── */
+.section-title {
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–muted);
+margin: 24px 0 8px 4px;
+}
+
+/* ── ITEM CARD ── */
+.item {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+padding: 12px 14px;
+background: var(–white);
+border: 1.5px solid var(–border);
+border-radius: 14px;
+margin-bottom: 8px;
+cursor: pointer;
+transition: all 0.15s;
+-webkit-tap-highlight-color: transparent;
+}
+.item:hover { border-color: var(–coral); background: #fffaf8; }
+.item:active { transform: scale(0.98); }
+.item.done {
+background: #fafafa;
+border-color: #ede8e4;
+opacity: 0.65;
+}
+.item.done .item-title { text-decoration: line-through; color: var(–muted); }
+
+.checkbox {
+width: 22px;
+height: 22px;
+border-radius: 6px;
+border: 2px solid var(–border);
+flex-shrink: 0;
+margin-top: 1px;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.15s;
+background: var(–white);
+}
+.checkbox svg { display: none; }
+.checkbox.checked { border-color: transparent; }
+.checkbox.checked svg { display: block; }
+
+.item-body { flex: 1; min-width: 0; }
+.item-title {
+font-size: 14px;
+font-weight: 700;
+color: var(–dark);
+line-height: 1.4;
+}
+.item-sub {
+font-size: 12px;
+font-weight: 600;
+color: var(–muted);
+margin-top: 3px;
+line-height: 1.5;
+}
+.item-code {
+font-family: ‘Courier New’, monospace;
+font-size: 11px;
+background: #f0ece8;
+color: var(–mid);
+padding: 5px 8px;
+border-radius: 6px;
+margin-top: 6px;
+display: block;
+word-break: break-all;
+}
+.item-badge {
+font-size: 10px;
+font-weight: 800;
+padding: 2px 8px;
+border-radius: 99px;
+flex-shrink: 0;
+margin-top: 3px;
+letter-spacing: 0.03em;
+}
+
+/* ── NAV BUTTONS ── */
+.nav-row {
+display: flex;
+gap: 10px;
+margin-top: 24px;
+}
+.nav-btn {
+flex: 1;
+padding: 14px;
+border-radius: 14px;
+border: none;
+font-family: ‘Nunito’, sans-serif;
+font-size: 14px;
+font-weight: 800;
+cursor: pointer;
+transition: all 0.15s;
+}
+.nav-btn:active { transform: scale(0.97); }
+.btn-prev { background: var(–border); color: var(–mid); }
+.btn-next { background: var(–coral); color: #fff; }
+.btn-next:hover { background: var(–coral-dark); }
+
+/* ── RESET ── */
+.reset-wrap {
+text-align: center;
+margin-top: 20px;
+}
+.reset-link {
+font-size: 12px;
+color: var(–muted);
+cursor: pointer;
+text-decoration: underline;
+font-weight: 600;
+background: none;
+border: none;
+font-family: ‘Nunito’, sans-serif;
+}
+.reset-link:hover { color: var(–coral); }
+
+/* ── COMPLETION BANNER ── */
+.complete-banner {
+background: var(–green-light);
+border: 1.5px solid #a3e4c0;
+border-radius: 18px;
+padding: 24px;
+text-align: center;
+margin-bottom: 20px;
+display: none;
+}
+.complete-banner.show { display: block; }
+.complete-banner h2 {
+font-family: ‘Fraunces’, serif;
+font-size: 22px;
+color: var(–green);
+margin-bottom: 6px;
+}
+.complete-banner p { font-size: 14px; color: var(–green); font-weight: 600; }
+
+@media (prefers-color-scheme: dark) {
+:root {
+–cream: #1a1208;
+–dark: #f5ede5;
+–mid: #c4a888;
+–muted: #8a7060;
+–border: #3a2818;
+–white: #241810;
+}
+.item:hover { background: #2a1e14; }
+.item.done { background: #1e1410; }
+.item-code { background: #2a1e14; color: #c4a888; }
+.stat-card { background: #241810; }
+.checkbox { background: #241810; }
+.site-header { background: #241810; }
+}
 </style>
+
 </head>
 <body>
 
-<header>
-  <h1>🐻 Kuma Launch Checklist</h1>
-  <p>Legion → Mac Mini · April 2026</p>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="header-title">
+        <h1>🐻 KumaStickers</h1>
+        <p>Complete launch guide · April 2026</p>
+      </div>
+      <div class="progress-ring-wrap">
+        <div class="ring-container">
+          <svg class="progress-ring" viewBox="0 0 52 52">
+            <circle class="ring-bg" cx="26" cy="26" r="22"/>
+            <circle class="ring-fill" id="ringFill" cx="26" cy="26" r="22"/>
+          </svg>
+          <span class="ring-pct" id="ringPct">0%</span>
+        </div>
+        <span>done</span>
+      </div>
+    </div>
+    <div class="phase-tabs" id="phaseTabs"></div>
+  </div>
 </header>
 
-<div class="summary" id="summary"></div>
-<button class="reset-btn" onclick="resetAll()">reset all</button>
+<div class="stats-bar">
+  <div class="stat-card"><div class="stat-num" id="statDone">0</div><div class="stat-lbl">Done</div></div>
+  <div class="stat-card"><div class="stat-num" id="statLeft">0</div><div class="stat-lbl">Left</div></div>
+  <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-lbl">Total</div></div>
+</div>
 
-<div class="wrap" id="list"></div>
+<div class="main" id="main"></div>
 
 <script>
-const DAYS = [
+const KEY = "kuma_full_guide_v1";
+
+const PHASES = [
   {
-    id:"today", label:"Today — Account setup", machine:"On your Legion right now", color:"#E8785A",
-    items:[
-      {t:"Create Replicate account", s:"replicate.com — sign up with GitHub for fastest onboarding"},
-      {t:"Add billing to Replicate", s:"Settings → Billing → add card → add $10 credit"},
-      {t:"Copy Replicate API token", s:"Account → API Tokens → copy r8_xxxx token, save it safely"},
-      {t:"Create Hugging Face account", s:"huggingface.co — free, used to host training images"},
-      {t:"Upload kuma_training_images.zip to Hugging Face", s:"New Dataset → Upload → copy the file URL after uploading"},
-      {t:"Create Etsy developer account", s:"etsy.com/developers → Create App → copy API key (Keystring)"},
-      {t:"Create Buffer account", s:"buffer.com → free plan → connect Instagram + TikTok"},
-      {t:"Copy Buffer access token", s:"buffer.com/developers → copy access token"},
-      {t:"Create Anthropic account (Claude API)", s:"console.anthropic.com → API Keys → Create Key → copy it"},
-      {t:"Create Printify account", s:"printify.com → free → connect Etsy shop when shop is live"},
-      {t:"Save ALL tokens in Notes or password manager", s:"You will need these again on Day 4 and Day 32"},
-      {t:"Download kuma_pipeline_bundle.zip", s:"Save to a folder you will transfer to Mac Mini on Day 4"},
+    id: "accounts",
+    label: "Phase 1",
+    title: "Create your accounts",
+    machine: "Do this now on your Legion",
+    color: "#E8785A",
+    sections: [
+      {
+        title: "Replicate — image generation",
+        items: [
+          { t: "Create Replicate account", s: "Go to replicate.com → Sign Up with GitHub (fastest)", badge: null },
+          { t: "Add billing to Replicate", s: "Settings → Billing → add card → add $10 credit to start", badge: null },
+          { t: "Copy Replicate API token", s: "Account → API Tokens → Create → copy r8_xxxx token", code: "Token format: r8_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" },
+        ]
+      },
+      {
+        title: "Hugging Face — training image host",
+        items: [
+          { t: "Create Hugging Face account", s: "huggingface.co → Sign Up → free account", badge: null },
+          { t: "Create new private dataset", s: "Profile → New Dataset → name it 'kuma-training' → Private", badge: null },
+          { t: "Upload kuma_training_images.zip", s: "Add File → Upload → wait for processing", badge: null },
+          { t: "Copy the direct download URL", s: "Click the file → copy download URL — you will paste this into Replicate", code: "https://huggingface.co/datasets/YOUR_NAME/kuma-training/resolve/main/kuma_training_images.zip" },
+        ]
+      },
+      {
+        title: "Etsy — your shop",
+        items: [
+          { t: "Create Etsy shop if you haven't already", s: "etsy.com/sell → set up KumaStickers shop", badge: null },
+          { t: "Create Etsy developer app", s: "etsy.com/developers → Create a New App → name it KumaStickers Pipeline", badge: null },
+          { t: "Copy Etsy API key (Keystring)", s: "Visible on your app page — this is your ETSY_API_KEY", badge: null },
+          { t: "Note your Etsy Shop ID", s: "Found in your Etsy shop URL: etsy.com/shop/YOUR_SHOP_NAME", badge: null },
+        ]
+      },
+      {
+        title: "Buffer — social scheduling",
+        items: [
+          { t: "Create Buffer account", s: "buffer.com → Start for Free", badge: null },
+          { t: "Connect Instagram account", s: "Buffer dashboard → Connect a Channel → Instagram", badge: null },
+          { t: "Connect TikTok account", s: "Buffer dashboard → Connect a Channel → TikTok", badge: null },
+          { t: "Copy Buffer access token", s: "buffer.com/developers → Create App → copy Access Token", badge: null },
+        ]
+      },
+      {
+        title: "Anthropic — Claude API",
+        items: [
+          { t: "Create Anthropic account", s: "console.anthropic.com → Sign Up", badge: null },
+          { t: "Copy API key", s: "Settings → API Keys → Create Key → copy it", code: "Key format: sk-ant-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" },
+          { t: "Add billing", s: "Usage-based — listing copy + trend scan costs ~$0.01 per full pipeline run", badge: null },
+        ]
+      },
+      {
+        title: "Printify — fulfillment",
+        items: [
+          { t: "Create Printify account", s: "printify.com → free account", badge: null },
+          { t: "Connect Etsy shop to Printify", s: "Printify dashboard → Manage stores → Add Etsy store", badge: null },
+        ]
+      },
+      {
+        title: "Save everything",
+        items: [
+          { t: "Save ALL tokens in Notes (locked) or password manager", s: "Replicate token, Anthropic key, Etsy API key, Buffer token — you need all of these on Day 4 AND Day 32", badge: "critical" },
+          { t: "Download kuma_pipeline_bundle.zip", s: "Save to a folder — you will transfer this to Mac Mini on Day 4", badge: null },
+          { t: "Download kuma_training_images.zip", s: "Your 12 background-removed training images — keep these safe", badge: null },
+        ]
+      },
     ]
   },
   {
-    id:"procreate", label:"Days 1-3 — More Kuma poses", machine:"iPad + Procreate", color:"#7C3AED",
-    items:[
-      {t:"Draw remaining poses to reach 15-20 total", s:"You currently have 12 — draw 3-8 more for best LoRA quality"},
-      {t:"Standing front (arms relaxed, 3-head chibi ratio)", s:"Most important base pose — LoRA anchors everything to this"},
-      {t:"Jumping (both feet off ground, arms in V)", s:"Add speed lines below feet for energy"},
-      {t:"Pointing forward (arm fully horizontal, paw at viewer)", s:""},
-      {t:"At least 3 holding-object poses total", s:"Critical — teaches LoRA that Kuma can hold things"},
-      {t:"Export all as PNG 2048x2048 transparent background", s:"Turn off background layer in Procreate before exporting"},
-      {t:"Save to iCloud Drive for easy Mac Mini access", s:"Or AirDrop directly to Mac Mini on Day 4"},
+    id: "procreate",
+    label: "Phase 2",
+    title: "Draw more Kuma poses",
+    machine: "iPad Pro + Procreate + Apple Pencil",
+    color: "#7C3AED",
+    sections: [
+      {
+        title: "Canvas setup",
+        items: [
+          { t: "Set canvas to 2048x2048px, 300 DPI, sRGB", s: "New canvas → Custom → enter these exact values", badge: null },
+          { t: "Use Studio Pen or Inking brush only", s: "Same brush, same weight across ALL drawings — this is critical for LoRA quality", badge: "important" },
+          { t: "Flat color fills only — no gradients, no textures", s: "Your existing style is already perfect — keep it consistent", badge: null },
+        ]
+      },
+      {
+        title: "Draw these poses (target 15-20 total, you have 12)",
+        items: [
+          { t: "Standing front — arms relaxed, 3-head chibi ratio", s: "Base pose — most important. LoRA anchors all other generations to this.", badge: "priority" },
+          { t: "Jumping — both feet off ground, arms in V shape", s: "Add speed lines below feet. Tilt body slightly forward.", badge: null },
+          { t: "Pointing forward — arm fully horizontal, paw at viewer", s: "Great for text sticker combinations", badge: null },
+          { t: "3+ holding-object poses (cup, flower, book, heart)", s: "CRITICAL — without these, themes like 'Kuma drinking boba' generate inaccurately", badge: "critical" },
+          { t: "Any additional poses you want to add", s: "More variety = more consistent LoRA output across all themes", badge: null },
+        ]
+      },
+      {
+        title: "Export and transfer",
+        items: [
+          { t: "Turn off background layer before each export", s: "Transparent PNG — no background at all", badge: "important" },
+          { t: "Export each pose as PNG at full resolution", s: "File → Share → PNG → Save to Files", badge: null },
+          { t: "Name files clearly", s: "kuma_01_standing.png, kuma_02_waving.png, kuma_13_jumping.png etc.", badge: null },
+          { t: "Save to iCloud Drive", s: "You will access these from Mac Mini on Day 4 — iCloud Drive is the easiest bridge", badge: null },
+        ]
+      }
     ]
   },
   {
-    id:"day4", label:"Day 4 — Full technical setup", machine:"Mac Mini M4 16GB", color:"#2563EB",
-    items:[
-      {t:"Unbox Mac Mini, sign in with Apple ID", s:""},
-      {t:"Install Homebrew", s:"Open Terminal → go to brew.sh → paste the install command"},
-      {t:"Install Python", s:"In Terminal: brew install python"},
-      {t:"Create ~/kuma_pipeline/ project folder", s:"In Terminal: mkdir ~/kuma_pipeline"},
-      {t:"Extract kuma_pipeline_bundle.zip into the folder", s:"All 7 scripts + kuma_context.json go here"},
-      {t:"Install Python dependencies", s:"pip install replicate requests Pillow rembg onnxruntime moviepy anthropic beautifulsoup4"},
-      {t:"Set environment variables in ~/.zshrc", s:"nano ~/.zshrc → paste all API keys at the bottom → Ctrl+X → Y → Enter"},
-      {t:"Run: source ~/.zshrc", s:"Loads env vars into current terminal session"},
-      {t:"Run dry run test", s:"cd ~/kuma_pipeline && python run_pipeline.py --dry_run"},
-      {t:"Add new Procreate images to training_images/", s:"AirDrop from iPad or copy from iCloud Drive"},
-      {t:"Upload final training zip to Hugging Face", s:"Replace the original zip if you added more images"},
-      {t:"Train LoRA on Replicate", s:"Search 'kohya sd15 lora' on Replicate → ~45 min → ~$2"},
-      {t:"Set REPLICATE_LORA_VERSION env var", s:"Copy version ID from completed Replicate run → add to ~/.zshrc → source ~/.zshrc"},
-      {t:"Run first single theme test", s:"python generate_kuma.py --theme 'Kuma drinking boba tea' --version $REPLICATE_LORA_VERSION"},
-      {t:"Review generated image quality", s:"Check: blue eye patches, panda proportions, flat art style, white background"},
-      {t:"Run full pipeline end-to-end", s:"python run_pipeline.py --dry_run first, then python run_pipeline.py"},
-      {t:"Install scout-only weekly cron", s:"python schedule_scout.py --install"},
+    id: "macmini16",
+    label: "Phase 3",
+    title: "Mac Mini 16GB setup",
+    machine: "Mac Mini M4 16GB — arrives Day 4",
+    color: "#2563EB",
+    sections: [
+      {
+        title: "First boot",
+        items: [
+          { t: "Unbox and sign in with Apple ID", s: "Use your existing Apple ID — this links iCloud Drive, AirDrop, and all Apple services", badge: null },
+          { t: "Install Homebrew (Mac package manager)", s: "Open Terminal → go to brew.sh → paste the install command", badge: null },
+          { t: "Install Python", s: "In Terminal run: brew install python", code: "brew install python" },
+          { t: "Verify Python installed correctly", s: "Run: python3 --version — should show 3.11+", code: "python3 --version" },
+        ]
+      },
+      {
+        title: "Project setup",
+        items: [
+          { t: "Create the kuma_pipeline project folder", s: "In Terminal run:", code: "mkdir ~/kuma_pipeline" },
+          { t: "Extract kuma_pipeline_bundle.zip into the folder", s: "Transfer from Legion via USB, iCloud Drive, or AirDrop — then unzip", badge: null },
+          { t: "Verify all 8 scripts are in the folder", s: "run_pipeline.py, trend_scout.py, generate_kuma.py, process_sticker.py, generate_collage.py, list_etsy.py, post_social.py, schedule_scout.py", badge: null },
+          { t: "Verify packs.json is also in the folder", s: "This defines your 6 sticker packs and pricing", badge: null },
+        ]
+      },
+      {
+        title: "Install dependencies",
+        items: [
+          { t: "Install all Python libraries", s: "In Terminal, navigate to your project folder then run:", code: "cd ~/kuma_pipeline\npip install replicate requests Pillow rembg onnxruntime moviepy anthropic beautifulsoup4" },
+          { t: "Wait for all installs to complete", s: "This takes 2-5 minutes — rembg and onnxruntime are the largest", badge: null },
+        ]
+      },
+      {
+        title: "Set environment variables",
+        items: [
+          { t: "Open ~/.zshrc in nano editor", s: "This file runs every time you open Terminal", code: "nano ~/.zshrc" },
+          { t: "Paste all API keys at the bottom of the file", s: "Fill in your actual values from Phase 1:", code: 'export REPLICATE_API_TOKEN="r8_your_token"\nexport REPLICATE_LORA_VERSION="set_after_training"\nexport ETSY_API_KEY="your_key"\nexport ETSY_SHOP_ID="your_shop_id"\nexport ETSY_SHIPPING_ID="set_later"\nexport ANTHROPIC_API_KEY="sk-ant-your_key"\nexport BUFFER_ACCESS_TOKEN="your_token"\nexport BUFFER_INSTAGRAM_ID="set_later"\nexport BUFFER_TIKTOK_ID="set_later"' },
+          { t: "Save and close nano", s: "Press Ctrl+X → press Y → press Enter", badge: null },
+          { t: "Load the env vars into current session", s: "", code: "source ~/.zshrc" },
+          { t: "Verify a token loaded correctly", s: "Should print your token — if blank, check for typos in .zshrc", code: "echo $REPLICATE_API_TOKEN" },
+        ]
+      },
+      {
+        title: "Get remaining IDs",
+        items: [
+          { t: "Get Etsy shipping profile ID", s: "Run this command — prints all your shipping profiles and their IDs:", code: "python list_etsy.py --list_shipping" },
+          { t: "Add ETSY_SHIPPING_ID to ~/.zshrc", s: "nano ~/.zshrc → update the value → source ~/.zshrc", badge: null },
+          { t: "Get Buffer channel IDs", s: "Run this command — prints your connected Instagram and TikTok IDs:", code: "python post_social.py --list_channels" },
+          { t: "Add BUFFER_INSTAGRAM_ID and BUFFER_TIKTOK_ID to ~/.zshrc", s: "nano ~/.zshrc → update both values → source ~/.zshrc", badge: null },
+        ]
+      },
+      {
+        title: "Add new training images",
+        items: [
+          { t: "Create training_images/ folder in project", s: "", code: "mkdir ~/kuma_pipeline/training_images" },
+          { t: "Copy new Procreate drawings from iCloud Drive into training_images/", s: "Finder → iCloud Drive → copy your new PNG files → paste into training_images/", badge: null },
+          { t: "Zip the entire training_images/ folder", s: "", code: "cd ~/kuma_pipeline\nzip -r kuma_training_final.zip training_images/" },
+          { t: "Upload kuma_training_final.zip to Hugging Face", s: "Replace the original zip — your new poses are now included", badge: null },
+        ]
+      },
+      {
+        title: "Test the pipeline (before LoRA)",
+        items: [
+          { t: "Run a full pipeline dry run", s: "This prints every command without executing anything — verify it all looks correct", code: "cd ~/kuma_pipeline\npython run_pipeline.py --dry_run" },
+          { t: "Fix any errors shown in dry run before continuing", s: "Common issues: missing env vars, missing script files, wrong Python version", badge: null },
+        ]
+      }
     ]
   },
   {
-    id:"day5", label:"Days 5-13 — Test and refine", machine:"Mac Mini 16GB", color:"#059669",
-    items:[
-      {t:"Review first batch of generated stickers", s:"Check style consistency across all 15 themes"},
-      {t:"Review Etsy draft listings", s:"Adjust price or description if needed before publishing"},
-      {t:"Review Buffer scheduled posts", s:"Check mockup quality before enabling auto-posting"},
-      {t:"Run trend scout", s:"python trend_scout.py — see what is trending on Etsy this week"},
-      {t:"Generate first trend-based batch", s:"python run_pipeline.py --stages scout generate process"},
-      {t:"Keep Mac Mini setup light", s:"You are returning it on Day 14 — avoid installing heavy software"},
+    id: "lora",
+    label: "Phase 4",
+    title: "Train your Kuma LoRA",
+    machine: "Replicate.com — ~45 min, ~$2",
+    color: "#0F6E56",
+    sections: [
+      {
+        title: "Before you train — verify image count",
+        items: [
+          { t: "Confirm you have 15-20 training images", s: "Check your training_images/ folder — count the PNG files", code: "ls ~/kuma_pipeline/training_images/ | wc -l" },
+          { t: "Verify all images have transparent backgrounds", s: "Open a few in Preview — should show checkerboard pattern where the background was", badge: "important" },
+          { t: "Verify consistent style across all drawings", s: "Same line weight, same eye shape, same proportions — this makes or breaks LoRA quality", badge: "important" },
+        ]
+      },
+      {
+        title: "Train on Replicate",
+        items: [
+          { t: "Go to replicate.com and search: kohya sd15 lora", s: "Pick the model with the most runs — usually ostris/kohya-ss-lora", badge: null },
+          { t: "Set instance_data_url to your Hugging Face zip URL", s: "The URL you copied in Phase 1: https://huggingface.co/datasets/YOUR_NAME/kuma-training/resolve/main/...", badge: null },
+          { t: "Set instance_prompt", s: "", code: "kuma_v1 kawaii panda bear sticker" },
+          { t: "Set class_prompt", s: "", code: "kawaii bear sticker" },
+          { t: "Set num_train_epochs to 100", s: "Good starting point for 15-20 images. Increase to 150 if results look off.", badge: null },
+          { t: "Set resolution to 512", s: "SD 1.5 trains at 512px — do not change this", badge: null },
+          { t: "Click Run and wait ~45 minutes", s: "Cost is approximately $2. You will get an email when it completes.", badge: null },
+        ]
+      },
+      {
+        title: "After training completes",
+        items: [
+          { t: "Copy the version ID from the completed run", s: "It looks like: a1b2c3d4e5f6g7h8... — copy the whole string", badge: "critical" },
+          { t: "Set REPLICATE_LORA_VERSION in ~/.zshrc", s: "", code: 'nano ~/.zshrc\n# Update this line:\nexport REPLICATE_LORA_VERSION="paste_version_id_here"\n# Then run:\nsource ~/.zshrc' },
+          { t: "Run your first test generation", s: "Check the output in ./raw_designs/ — look for blue eye patches, correct proportions, flat art style", code: 'python generate_kuma.py \\\n  --theme "Kuma drinking boba tea" \\\n  --version $REPLICATE_LORA_VERSION \\\n  --model sd15' },
+          { t: "Verify output quality", s: "Blue eye patches present? Panda proportions correct? Flat digital art style? White background? If not — increase epochs to 150 and retrain.", badge: "important" },
+        ]
+      }
     ]
   },
   {
-    id:"day14", label:"Day 14 — Return 16GB, gap period", machine:"Back to Legion", color:"#B07D1A",
-    items:[
-      {t:"Return Mac Mini 16GB before the return window closes", s:"Day 14 is the hard deadline — do not miss it"},
-      {t:"Copy kuma_pipeline/ folder to iCloud Drive", s:"Or use an external drive as backup"},
-      {t:"Copy all env vars from ~/.zshrc to Notes", s:"Every single token — you will need them again on Day 32"},
-      {t:"Continue drawing Kuma poses in Procreate on iPad", s:"More images = better LoRA results when you retrain on 24GB"},
-      {t:"Wait for Mac Mini 24GB", s:"~2 weeks — use Legion for daily use in the meantime"},
+    id: "pipeline",
+    label: "Phase 5",
+    title: "Run the full pipeline",
+    machine: "Mac Mini 16GB — terminal",
+    color: "#B07D1A",
+    sections: [
+      {
+        title: "First full run",
+        items: [
+          { t: "Run trend scout to get fresh themes", s: "Scans Etsy, finds trending sticker categories, generates Kuma theme ideas", code: "python trend_scout.py" },
+          { t: "Review themes.json — approve the suggestions", s: "Open themes.json in any text editor — check the top_picks look good", badge: null },
+          { t: "Run full pipeline dry run one more time", s: "Now with your real LoRA version set — verify all stages look correct", code: "python run_pipeline.py --dry_run" },
+          { t: "Run the full pipeline for real", s: "All 6 stages: scout → generate → process → collage → list → social", code: "python run_pipeline.py" },
+          { t: "Watch the output for errors", s: "Each stage logs to terminal. If a stage fails, fix it and re-run with --stages to skip completed stages", badge: null },
+        ]
+      },
+      {
+        title: "Review outputs before publishing",
+        items: [
+          { t: "Review generated sticker images in ./raw_designs/", s: "Check all 15 themes — should look like your Kuma style consistently", badge: "important" },
+          { t: "Review processed stickers in ./stickers/", s: "Background removed, white border applied, 2100x2100px — ready to print", badge: null },
+          { t: "Review pack collage mockups in ./mockups/", s: "3 sizes per pack — square, portrait, story. Check branding and layout.", badge: null },
+          { t: "Review Etsy draft listings", s: "Log in to Etsy → Shop Manager → Listings → Drafts — review title, description, tags, image for each", badge: "important" },
+          { t: "Review Buffer scheduled posts", s: "Log in to Buffer — check mockup images and captions for Instagram and TikTok", badge: null },
+          { t: "Publish Etsy listings you are happy with", s: "In Etsy drafts, click Publish on each approved listing — they go live immediately", badge: null },
+        ]
+      },
+      {
+        title: "Update packs.json",
+        items: [
+          { t: "Open packs.json and update sticker filenames", s: "Pipeline names files like kuma_boba_tea_sticker.png — add _sticker to each filename in packs.json", code: "# Change: kuma_boba_tea.png\n# To:     kuma_boba_tea_sticker.png" },
+          { t: "Re-run collage stage with updated filenames", s: "", code: "python run_pipeline.py --stages collage" },
+          { t: "Review pack mockups in ./mockups/ again", s: "Verify all stickers loaded correctly — no missing images", badge: null },
+        ]
+      },
+      {
+        title: "Install weekly automation",
+        items: [
+          { t: "Install scout-only cron first (recommended)", s: "Runs trend_scout.py every Monday 8am — keeps themes fresh without full auto", code: "python schedule_scout.py --install" },
+          { t: "Verify cron installed correctly", s: "", code: "python schedule_scout.py --list" },
+          { t: "Keep setup light — you are returning this Mac Mini on Day 14", s: "Do not install heavy software. The pipeline is the priority.", badge: "important" },
+        ]
+      }
     ]
   },
   {
-    id:"day32", label:"~Day 32 — Full automation live", machine:"Mac Mini M4 24GB", color:"#1A7A45",
-    items:[
-      {t:"Set up Mac Mini 24GB as your main machine", s:""},
-      {t:"Transfer kuma_pipeline/ folder from iCloud Drive", s:""},
-      {t:"Re-install all Python dependencies", s:"pip install replicate requests Pillow rembg onnxruntime moviepy anthropic beautifulsoup4"},
-      {t:"Restore all env vars from Notes into ~/.zshrc", s:"Every API key from your saved notes"},
-      {t:"Install Studio One", s:"Your DAW — Apple Silicon native, runs great on M4"},
-      {t:"Install ComfyUI for free local image generation", s:"github.com/comfyanonymous/ComfyUI — follow Mac Apple Silicon instructions"},
-      {t:"Copy kuma_v1.safetensors LoRA to ComfyUI/models/loras/", s:""},
-      {t:"Test local ComfyUI generation — $0 per image", s:"~8-15 seconds per image on M4 Metal GPU"},
-      {t:"Install full pipeline cron", s:"python schedule_scout.py --install --full_pipeline --version $REPLICATE_LORA_VERSION"},
-      {t:"Sell Legion", s:"RTX 3060/3070 laptops still in demand — expect $700-900"},
+    id: "return",
+    label: "Phase 6",
+    title: "Return 16GB, gap period",
+    machine: "Day 14 — back to Legion",
+    color: "#994020",
+    sections: [
+      {
+        title: "Before returning Mac Mini 16GB",
+        items: [
+          { t: "Copy kuma_pipeline/ folder to iCloud Drive", s: "This backs up all your scripts, logs, and generated assets", code: "cp -r ~/kuma_pipeline ~/Library/Mobile\\ Documents/com~apple~CloudDocs/kuma_pipeline" },
+          { t: "Copy all env vars from ~/.zshrc to Notes", s: "Every single token — open Notes on your iPhone and paste the entire exports section", badge: "critical" },
+          { t: "Note your REPLICATE_LORA_VERSION", s: "This is the most important value — you need it on Day 32", badge: "critical" },
+          { t: "Export generation_log.json and listing_log.json", s: "Save to iCloud Drive — these logs prevent duplicate generations and listings", badge: null },
+          { t: "Return Mac Mini 16GB before Day 14 deadline", s: "Do not miss this — the return window is 14 days from delivery", badge: "critical" },
+        ]
+      },
+      {
+        title: "Gap period tasks (Legion)",
+        items: [
+          { t: "Draw more Kuma poses in Procreate for LoRA v2", s: "More training images = better quality. Aim for 25-30 total.", badge: null },
+          { t: "Monitor your Etsy shop — reply to any messages", s: "Printify handles fulfillment automatically — just watch for questions", badge: null },
+          { t: "Wait for Mac Mini 24GB to arrive", s: "~2 weeks — use Legion for daily use in the meantime", badge: null },
+        ]
+      }
     ]
   },
+  {
+    id: "mac24",
+    label: "Phase 7",
+    title: "Mac Mini 24GB — final setup",
+    machine: "Mac Mini M4 24GB — permanent machine",
+    color: "#1A7A45",
+    sections: [
+      {
+        title: "Initial setup",
+        items: [
+          { t: "Set up Mac Mini 24GB as your main machine", s: "Sign in with Apple ID — iCloud Drive syncs automatically", badge: null },
+          { t: "Transfer kuma_pipeline/ from iCloud Drive", s: "Should sync automatically — verify it appears in Finder → iCloud Drive", badge: null },
+          { t: "Install Homebrew and Python (same as Phase 3)", s: "", code: "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nbrew install python" },
+          { t: "Re-install all Python dependencies", s: "", code: "cd ~/kuma_pipeline\npip install replicate requests Pillow rembg onnxruntime moviepy anthropic beautifulsoup4" },
+          { t: "Restore all env vars from Notes into ~/.zshrc", s: "Every API key — copy from your saved Notes and paste into ~/.zshrc", badge: "critical" },
+          { t: "Run source ~/.zshrc", s: "", code: "source ~/.zshrc" },
+          { t: "Run dry run to verify everything works", s: "", code: "python run_pipeline.py --dry_run" },
+        ]
+      },
+      {
+        title: "Install Studio One",
+        items: [
+          { t: "Download Studio One from presonus.com", s: "Sign in with your PreSonus account — download the Mac version", badge: null },
+          { t: "Install and activate Studio One", s: "Apple Silicon native — runs great on M4", badge: null },
+          { t: "Transfer your Studio One projects from Legion or backup", s: "", badge: null },
+        ]
+      },
+      {
+        title: "Install ComfyUI — free local image generation",
+        items: [
+          { t: "Clone ComfyUI from GitHub", s: "", code: "cd ~\ngit clone https://github.com/comfyanonymous/ComfyUI\ncd ComfyUI\npip install -r requirements.txt" },
+          { t: "Copy kuma_v1.safetensors LoRA into ComfyUI models folder", s: "Download from your Replicate model page first", code: "cp kuma_v1.safetensors ~/ComfyUI/models/loras/" },
+          { t: "Test ComfyUI launches", s: "", code: "cd ~/ComfyUI\npython main.py" },
+          { t: "Test a local generation — should take 8-15 seconds", s: "$0 per image vs $0.01-0.02 on Replicate", badge: "important" },
+          { t: "Verify generate_kuma.py falls back to Replicate when ComfyUI is off", s: "Stop ComfyUI → run a test generation → should automatically use Replicate", badge: null },
+        ]
+      },
+      {
+        title: "Enable full automation",
+        items: [
+          { t: "Remove scout-only cron from 16GB setup (already gone with machine return)", s: "Fresh install — no old cron jobs", badge: null },
+          { t: "Install full pipeline cron — Monday 8am auto-run", s: "", code: "python schedule_scout.py --install --full_pipeline --version $REPLICATE_LORA_VERSION" },
+          { t: "Verify cron installed", s: "", code: "python schedule_scout.py --list" },
+          { t: "Check macOS Full Disk Access for Terminal", s: "System Settings → Privacy & Security → Full Disk Access → add Terminal — required for cron to run", badge: "important" },
+          { t: "Do a final full pipeline run to confirm everything works end-to-end", s: "", code: "python run_pipeline.py" },
+        ]
+      },
+      {
+        title: "Wrap up",
+        items: [
+          { t: "Sell Legion on eBay or Facebook Marketplace", s: "RTX 3060/3070 2021 laptops sell for $700-900 in good condition", badge: null },
+          { t: "Update packs.json with any new sticker filenames", s: "As you add more designs, keep the pack config current", badge: null },
+          { t: "Consider retraining LoRA with 25-30 images", s: "More training images = more consistent output — worth doing once you have them", badge: null },
+          { t: "Ship is launched — pipeline runs every Monday hands-free", s: "Check cron.log Monday mornings and review Etsy drafts before publishing", badge: null },
+        ]
+      }
+    ]
+  }
 ];
 
-const KEY = "kuma_checklist_v2";
+// ── STATE ──────────────────────────────────────────────────────────────────
 let state = {};
+let currentPhase = 0;
+
+const BADGE_CONFIG = {
+  critical:  { bg: "#fde8de", color: "#c45a3e", label: "Critical" },
+  important: { bg: "#fff8e1", color: "#b07d1a", label: "Important" },
+  priority:  { bg: "#ede9fe", color: "#6d28d9",  label: "Priority" },
+};
 
 function load(){
-  try{ state = JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(e){ state={}; }
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ state={}; }
+  try { currentPhase = parseInt(localStorage.getItem(KEY+"_phase") || "0"); } catch(e){ currentPhase=0; }
 }
 function save(){
-  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+  try { localStorage.setItem(KEY+"_phase", currentPhase); } catch(e){}
 }
-function toggle(id){
+function toggleItem(id){
   state[id] = !state[id];
   save();
   render();
@@ -253,63 +823,123 @@ function resetAll(){
     render();
   }
 }
-function totalDone(){
-  return DAYS.reduce((a,d)=>a+d.items.filter((_,i)=>state[d.id+"_"+i]).length,0);
+function goPhase(i){
+  currentPhase = i;
+  save();
+  render();
+  window.scrollTo(0, 0);
 }
-function totalAll(){
-  return DAYS.reduce((a,d)=>a+d.items.length,0);
+
+function countPhase(phase){
+  let total = 0, done = 0;
+  phase.sections.forEach(sec => {
+    sec.items.forEach((item, ii) => {
+      const idx = phase.sections.indexOf(sec);
+      const id = phase.id + "_" + idx + "_" + ii;
+      total++;
+      if(state[id]) done++;
+    });
+  });
+  return { total, done };
+}
+
+function countAll(){
+  let total = 0, done = 0;
+  PHASES.forEach(p => {
+    const c = countPhase(p);
+    total += c.total;
+    done += c.done;
+  });
+  return { total, done };
 }
 
 function render(){
-  const total = totalAll();
-  const done  = totalDone();
-  const pct   = total ? Math.round(done/total*100) : 0;
+  const { total, done } = countAll();
+  const pct = total ? Math.round(done / total * 100) : 0;
 
-  document.getElementById("summary").innerHTML = `
-    <div class="stat"><div class="stat-num">${done}</div><div class="stat-lbl">Completed</div></div>
-    <div class="stat"><div class="stat-num">${total-done}</div><div class="stat-lbl">Remaining</div></div>
-    <div class="stat"><div class="stat-num">${pct}%</div><div class="stat-lbl">Progress</div></div>
+  // Ring
+  const circ = 2 * Math.PI * 22;
+  const offset = circ - (pct / 100) * circ;
+  document.getElementById("ringFill").style.strokeDashoffset = offset;
+  document.getElementById("ringFill").style.strokeDasharray = circ;
+  document.getElementById("ringPct").textContent = pct + "%";
+
+  // Stats
+  document.getElementById("statDone").textContent = done;
+  document.getElementById("statLeft").textContent = total - done;
+  document.getElementById("statTotal").textContent = total;
+
+  // Tabs
+  document.getElementById("phaseTabs").innerHTML = PHASES.map((p, i) => {
+    const c = countPhase(p);
+    const allDone = c.done === c.total;
+    return `<button class="tab-btn${i === currentPhase ? " active" : ""}" onclick="goPhase(${i})">
+      ${allDone ? "✓ " : ""}${p.label}
+    </button>`;
+  }).join("");
+
+  // Main content
+  const p = PHASES[currentPhase];
+  const pc = countPhase(p);
+  const ppct = pc.total ? Math.round(pc.done / pc.total * 100) : 0;
+
+  let html = `
+    <div class="complete-banner${done === total ? " show" : ""}" id="completeBanner">
+      <h2>🎉 All done!</h2>
+      <p>KumaStickers is fully launched and running on autopilot every Monday.</p>
+    </div>
+    <div class="phase-header" style="background:${p.color}">
+      <div class="phase-label">${p.label} of ${PHASES.length}</div>
+      <div class="phase-title">${p.title}</div>
+      <div class="phase-machine">${p.machine}</div>
+      <div class="phase-progress-wrap">
+        <div class="phase-progress-bar" style="width:${Math.max(ppct,2)}%"></div>
+      </div>
+      <div class="phase-count">${pc.done}/${pc.total}</div>
+    </div>
   `;
 
-  document.getElementById("list").innerHTML = DAYS.map(day=>{
-    const dayDone = day.items.filter((_,i)=>state[day.id+"_"+i]).length;
-    const dayPct  = day.items.length ? Math.round(dayDone/day.items.length*100) : 0;
-    const itemsHtml = day.items.map((item,i)=>{
-      const id  = day.id+"_"+i;
+  p.sections.forEach((sec, si) => {
+    html += `<div class="section-title">${sec.title}</div>`;
+    sec.items.forEach((item, ii) => {
+      const id = p.id + "_" + si + "_" + ii;
       const chk = state[id];
-      return `<div class="item${chk?" done":""}" onclick="toggle('${id}')">
-        <div class="checkbox${chk?" checked":""}" style="${chk?`background:${day.color};border-color:${day.color}`:""}">
-          <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-            <path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div>
-          <div class="label">${item.t}</div>
-          ${item.s?`<div class="sub">${item.s}</div>`:""}
-        </div>
-      </div>`;
-    }).join("");
-
-    return `
-      <div class="day-header" style="background:${day.color}">
-        <div class="day-meta">
-          <div>
-            <h2>${day.label}</h2>
-            <p>${day.machine}</p>
+      const badge = item.badge ? BADGE_CONFIG[item.badge] : null;
+      const checkColor = chk ? p.color : "";
+      html += `
+        <div class="item${chk ? " done" : ""}" onclick="toggleItem('${id}')">
+          <div class="checkbox${chk ? " checked" : ""}" style="${chk ? `background:${p.color};border-color:${p.color}` : ""}">
+            <svg width="12" height="10" viewBox="0 0 12 10" fill="none">
+              <path d="M1 5L4.5 8.5L11 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <span class="count-badge">${dayDone}/${day.items.length}</span>
+          <div class="item-body">
+            <div style="display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap">
+              <div class="item-title">${item.t}</div>
+              ${badge ? `<span class="item-badge" style="background:${badge.bg};color:${badge.color}">${badge.label}</span>` : ""}
+            </div>
+            ${item.s ? `<div class="item-sub">${item.s}</div>` : ""}
+            ${item.code ? `<code class="item-code">${item.code.replace(/\n/g, "<br>")}</code>` : ""}
+          </div>
         </div>
-        <div class="progress-wrap">
-          <div class="progress-bar" style="width:${dayPct}%"></div>
-        </div>
-      </div>
-      <div class="items">${itemsHtml}</div>
-    `;
-  }).join("");
+      `;
+    });
+  });
+
+  // Nav
+  html += `<div class="nav-row">`;
+  if(currentPhase > 0) html += `<button class="nav-btn btn-prev" onclick="goPhase(${currentPhase-1})">← ${PHASES[currentPhase-1].label}</button>`;
+  if(currentPhase < PHASES.length - 1) html += `<button class="nav-btn btn-next" onclick="goPhase(${currentPhase+1})">${PHASES[currentPhase+1].label} →</button>`;
+  html += `</div>`;
+
+  html += `<div class="reset-wrap"><button class="reset-link" onclick="resetAll()">reset all checkboxes</button></div>`;
+
+  document.getElementById("main").innerHTML = html;
 }
 
 load();
 render();
 </script>
+
 </body>
 </html>

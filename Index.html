@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐻 Kuma Launch Checklist</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #fdf8f5;
+    color: #3c2820;
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+  header {
+    background: #fff;
+    border-bottom: 1px solid #f0ece8;
+    padding: 20px 20px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  header h1 { font-size: 20px; font-weight: 800; color: #3c2820; }
+  header p  { font-size: 13px; color: #aaa; margin-top: 2px; }
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 16px 16px 0;
+  }
+  .stat {
+    background: #fff;
+    border: 1px solid #f0ece8;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+  }
+  .stat-num { font-size: 24px; font-weight: 800; color: #3c2820; }
+  .stat-lbl { font-size: 11px; color: #aaa; margin-top: 2px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .reset-btn {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #ccc;
+    cursor: pointer;
+    padding: 10px 20px 4px;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    width: 100%;
+  }
+  .reset-btn:hover { color: #e8785a; }
+  .wrap { padding: 0 12px; }
+  .day-header {
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin: 16px 0 6px;
+    user-select: none;
+  }
+  .day-header h2 { font-size: 15px; font-weight: 800; color: #fff; }
+  .day-header p  { font-size: 12px; color: rgba(255,255,255,0.75); margin-top: 2px; }
+  .day-meta { display: flex; justify-content: space-between; align-items: center; }
+  .count-badge {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .progress-wrap {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 99px;
+    height: 4px;
+  }
+  .progress-bar {
+    height: 4px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.9);
+    transition: width 0.3s ease;
+  }
+  .items { margin-bottom: 4px; }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background 0.1s;
+  }
+  .item:hover { background: #fff; border-color: #f0ece8; }
+  .item.done .label { text-decoration: line-through; color: #bbb; }
+  .item.done .sub   { color: #ccc; }
+  .item.done { opacity: 0.6; }
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .checkbox svg { display: none; }
+  .checkbox.checked svg { display: block; }
+  .label { font-size: 14px; color: #3c2820; line-height: 1.5; font-weight: 600; }
+  .sub   { font-size: 12px; color: #888; margin-top: 2px; line-height: 1.5; }
+
+  @media (prefers-color-scheme: dark) {
+    body    { background: #1a1410; color: #f0e8e0; }
+    header  { background: #221a14; border-color: #3a2820; }
+    header h1 { color: #f0e8e0; }
+    .stat   { background: #221a14; border-color: #3a2820; }
+    .stat-num { color: #f0e8e0; }
+    .item:hover { background: #221a14; border-color: #3a2820; }
+    .label  { color: #f0e8e0; }
+    .item.done .label { color: #665544; }
+    .item.done .sub   { color: #554433; }
+    .checkbox { border-color: #554433; }
+    .count-badge { background: rgba(0,0,0,0.3); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🐻 Kuma Launch Checklist</h1>
+  <p>Legion → Mac Mini · April 2026</p>
+</header>
+
+<div class="summary" id="summary"></div>
+<button class="reset-btn" onclick="resetAll()">reset all</button>
+
+<div class="wrap" id="list"></div>
+
+<script>
+const DAYS = [
+  {
+    id:"today", label:"Today — Account setup", machine:"On your Legion right now", color:"#E8785A",
+    items:[
+      {t:"Create Replicate account", s:"replicate.com — sign up with GitHub for fastest onboarding"},
+      {t:"Add billing to Replicate", s:"Settings → Billing → add card → add $10 credit"},
+      {t:"Copy Replicate API token", s:"Account → API Tokens → copy r8_xxxx token, save it safely"},
+      {t:"Create Hugging Face account", s:"huggingface.co — free, used to host training images"},
+      {t:"Upload kuma_training_images.zip to Hugging Face", s:"New Dataset → Upload → copy the file URL after uploading"},
+      {t:"Create Etsy developer account", s:"etsy.com/developers → Create App → copy API key (Keystring)"},
+      {t:"Create Buffer account", s:"buffer.com → free plan → connect Instagram + TikTok"},
+      {t:"Copy Buffer access token", s:"buffer.com/developers → copy access token"},
+      {t:"Create Anthropic account (Claude API)", s:"console.anthropic.com → API Keys → Create Key → copy it"},
+      {t:"Create Printify account", s:"printify.com → free → connect Etsy shop when shop is live"},
+      {t:"Save ALL tokens in Notes or password manager", s:"You will need these again on Day 4 and Day 32"},
+      {t:"Download kuma_pipeline_bundle.zip", s:"Save to a folder you will transfer to Mac Mini on Day 4"},
+    ]
+  },
+  {
+    id:"procreate", label:"Days 1-3 — More Kuma poses", machine:"iPad + Procreate", color:"#7C3AED",
+    items:[
+      {t:"Draw remaining poses to reach 15-20 total", s:"You currently have 12 — draw 3-8 more for best LoRA quality"},
+      {t:"Standing front (arms relaxed, 3-head chibi ratio)", s:"Most important base pose — LoRA anchors everything to this"},
+      {t:"Jumping (both feet off ground, arms in V)", s:"Add speed lines below feet for energy"},
+      {t:"Pointing forward (arm fully horizontal, paw at viewer)", s:""},
+      {t:"At least 3 holding-object poses total", s:"Critical — teaches LoRA that Kuma can hold things"},
+      {t:"Export all as PNG 2048x2048 transparent background", s:"Turn off background layer in Procreate before exporting"},
+      {t:"Save to iCloud Drive for easy Mac Mini access", s:"Or AirDrop directly to Mac Mini on Day 4"},
+    ]
+  },
+  {
+    id:"day4", label:"Day 4 — Full technical setup", machine:"Mac Mini M4 16GB", color:"#2563EB",
+    items:[
+      {t:"Unbox Mac Mini, sign in with Apple ID", s:""},
+      {t:"Install Homebrew", s:"Open Terminal → go to brew.sh → paste the install command"},
+      {t:"Install Python", s:"In Terminal: brew install python"},
+      {t:"Create ~/kuma_pipeline/ project folder", s:"In Terminal: mkdir ~/kuma_pipeline"},
+      {t:"Extract kuma_pipeline_bundle.zip into the folder", s:"All 7 scripts + kuma_context.json go here"},
+      {t:"Install Python dependencies", s:"pip install replicate requests Pillow rembg onnxruntime moviepy anthropic beautifulsoup4"},
+      {t:"Set environment variables in ~/.zshrc", s:"nano ~/.zshrc → paste all API keys at the bottom → Ctrl+X → Y → Enter"},
+      {t:"Run: source ~/.zshrc", s:"Loads env vars into current terminal session"},
+      {t:"Run dry run test", s:"cd ~/kuma_pipeline && python run_pipeline.py --dry_run"},
+      {t:"Add new Procreate images to training_images/", s:"AirDrop from iPad or copy from iCloud Drive"},
+      {t:"Upload final training zip to Hugging Face", s:"Replace the original zip if you added more images"},
+      {t:"Train LoRA on Replicate", s:"Search 'kohya sd15 lora' on Replicate → ~45 min → ~$2"},
+      {t:"Set REPLICATE_LORA_VERSION env var", s:"Copy version ID from completed Replicate run → add to ~/.zshrc → source ~/.zshrc"},
+      {t:"Run first single theme test", s:"python generate_kuma.py --theme 'Kuma drinking boba tea' --version $REPLICATE_LORA_VERSION"},
+      {t:"Review generated image quality", s:"Check: blue eye patches, panda proportions, flat art style, white background"},
+      {t:"Run full pipeline end-to-end", s:"python run_pipeline.py --dry_run first, then python run_pipeline.py"},
+      {t:"Install scout-only weekly cron", s:"python schedule_scout.py --install"},
+    ]
+  },
+  {
+    id:"day5", label:"Days 5-13 — Test and refine", machine:"Mac Mini 16GB", color:"#059669",
+    items:[
+      {t:"Review first batch of generated stickers", s:"Check style consistency across all 15 themes"},
+      {t:"Review Etsy draft listings", s:"Adjust price or description if needed before publishing"},
+      {t:"Review Buffer scheduled posts", s:"Check mockup quality before enabling auto-posting"},
+      {t:"Run trend scout", s:"python trend_scout.py — see what is trending on Etsy this week"},
+      {t:"Generate first trend-based batch", s:"python run_pipeline.py --stages scout generate process"},
+      {t:"Keep Mac Mini setup light", s:"You are returning it on Day 14 — avoid installing heavy software"},
+    ]
+  },
+  {
+    id:"day14", label:"Day 14 — Return 16GB, gap period", machine:"Back to Legion", color:"#B07D1A",
+    items:[
+      {t:"Return Mac Mini 16GB before the return window closes", s:"Day 14 is the hard deadline — do not miss it"},
+      {t:"Copy kuma_pipeline/ folder to iCloud Drive", s:"Or use an external drive as backup"},
+      {t:"Copy all env vars from ~/.zshrc to Notes", s:"Every single token — you will need them again on Day 32"},
+      {t:"Continue drawing Kuma poses in Procreate on iPad", s:"More images = better LoRA results when you retrain on 24GB"},
+      {t:"Wait for Mac Mini 24GB", s:"~2 weeks — use Legion for daily use in the meantime"},
+    ]
+  },
+  {
+    id:"day32", label:"~Day 32 — Full automation live", machine:"Mac Mini M4 24GB", color:"#1A7A45",
+    items:[
+      {t:"Set up Mac Mini 24GB as your main machine", s:""},
+      {t:"Transfer kuma_pipeline/ folder from iCloud Drive", s:""},
+      {t:"Re-install all Python dependencies", s:"pip install replicate requests Pillow rembg onnxruntime moviepy anthropic beautifulsoup4"},
+      {t:"Restore all env vars from Notes into ~/.zshrc", s:"Every API key from your saved notes"},
+      {t:"Install Studio One", s:"Your DAW — Apple Silicon native, runs great on M4"},
+      {t:"Install ComfyUI for free local image generation", s:"github.com/comfyanonymous/ComfyUI — follow Mac Apple Silicon instructions"},
+      {t:"Copy kuma_v1.safetensors LoRA to ComfyUI/models/loras/", s:""},
+      {t:"Test local ComfyUI generation — $0 per image", s:"~8-15 seconds per image on M4 Metal GPU"},
+      {t:"Install full pipeline cron", s:"python schedule_scout.py --install --full_pipeline --version $REPLICATE_LORA_VERSION"},
+      {t:"Sell Legion", s:"RTX 3060/3070 laptops still in demand — expect $700-900"},
+    ]
+  },
+];
+
+const KEY = "kuma_checklist_v2";
+let state = {};
+
+function load(){
+  try{ state = JSON.parse(localStorage.getItem(KEY)||"{}"); }catch(e){ state={}; }
+}
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+}
+function toggle(id){
+  state[id] = !state[id];
+  save();
+  render();
+}
+function resetAll(){
+  if(confirm("Reset all checkboxes? This cannot be undone.")){
+    state = {};
+    save();
+    render();
+  }
+}
+function totalDone(){
+  return DAYS.reduce((a,d)=>a+d.items.filter((_,i)=>state[d.id+"_"+i]).length,0);
+}
+function totalAll(){
+  return DAYS.reduce((a,d)=>a+d.items.length,0);
+}
+
+function render(){
+  const total = totalAll();
+  const done  = totalDone();
+  const pct   = total ? Math.round(done/total*100) : 0;
+
+  document.getElementById("summary").innerHTML = `
+    <div class="stat"><div class="stat-num">${done}</div><div class="stat-lbl">Completed</div></div>
+    <div class="stat"><div class="stat-num">${total-done}</div><div class="stat-lbl">Remaining</div></div>
+    <div class="stat"><div class="stat-num">${pct}%</div><div class="stat-lbl">Progress</div></div>
+  `;
+
+  document.getElementById("list").innerHTML = DAYS.map(day=>{
+    const dayDone = day.items.filter((_,i)=>state[day.id+"_"+i]).length;
+    const dayPct  = day.items.length ? Math.round(dayDone/day.items.length*100) : 0;
+    const itemsHtml = day.items.map((item,i)=>{
+      const id  = day.id+"_"+i;
+      const chk = state[id];
+      return `<div class="item${chk?" done":""}" onclick="toggle('${id}')">
+        <div class="checkbox${chk?" checked":""}" style="${chk?`background:${day.color};border-color:${day.color}`:""}">
+          <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+            <path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="label">${item.t}</div>
+          ${item.s?`<div class="sub">${item.s}</div>`:""}
+        </div>
+      </div>`;
+    }).join("");
+
+    return `
+      <div class="day-header" style="background:${day.color}">
+        <div class="day-meta">
+          <div>
+            <h2>${day.label}</h2>
+            <p>${day.machine}</p>
+          </div>
+          <span class="count-badge">${dayDone}/${day.items.length}</span>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-bar" style="width:${dayPct}%"></div>
+        </div>
+      </div>
+      <div class="items">${itemsHtml}</div>
+    `;
+  }).join("");
+}
+
+load();
+render();
+</script>
+</body>
+</html>

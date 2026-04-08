@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🐻 KumaStickers — Complete Guide</title>
+<title>🐻 Kawaii Supply — Complete Launch Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -29,390 +28,389 @@
     --teal-light: #e1f5ee;
   }
 
-- { box-sizing: border-box; margin: 0; padding: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-font-family: ‘Nunito’, sans-serif;
-background: var(–cream);
-color: var(–dark);
-padding-bottom: 80px;
-}
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    padding-bottom: 80px;
+  }
 
-/* ── HEADER ── */
-.site-header {
-background: var(–white);
-border-bottom: 1.5px solid var(–border);
-padding: 0 20px;
-position: sticky;
-top: 0;
-z-index: 100;
-}
-.header-inner {
-max-width: 680px;
-margin: 0 auto;
-padding: 16px 0 0;
-}
-.header-top {
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-margin-bottom: 14px;
-}
-.header-title h1 {
-font-family: ‘Fraunces’, serif;
-font-size: 22px;
-font-weight: 700;
-color: var(–dark);
-line-height: 1.2;
-}
-.header-title p {
-font-size: 12px;
-color: var(–muted);
-margin-top: 2px;
-font-weight: 600;
-}
-.progress-ring-wrap {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 2px;
-}
-.progress-ring-wrap span {
-font-size: 10px;
-font-weight: 700;
-color: var(–muted);
-letter-spacing: 0.06em;
-text-transform: uppercase;
-}
-.progress-ring {
-width: 52px;
-height: 52px;
-transform: rotate(-90deg);
-}
-.progress-ring circle {
-fill: none;
-stroke-width: 4;
-}
-.ring-bg { stroke: var(–border); }
-.ring-fill {
-stroke: var(–coral);
-stroke-linecap: round;
-stroke-dasharray: 138;
-stroke-dashoffset: 138;
-transition: stroke-dashoffset 0.5s ease;
-}
-.ring-pct {
-position: absolute;
-font-size: 11px;
-font-weight: 800;
-color: var(–coral);
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%) rotate(90deg);
-}
-.ring-container { position: relative; width: 52px; height: 52px; }
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--white);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 16px 0 0;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .header-title h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .header-title p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 600;
+  }
+  .progress-ring-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .progress-ring-wrap span {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .progress-ring {
+    width: 52px;
+    height: 52px;
+    transform: rotate(-90deg);
+  }
+  .progress-ring circle {
+    fill: none;
+    stroke-width: 4;
+  }
+  .ring-bg { stroke: var(--border); }
+  .ring-fill {
+    stroke: var(--coral);
+    stroke-linecap: round;
+    stroke-dasharray: 138;
+    stroke-dashoffset: 138;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+  .ring-pct {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--coral);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  .ring-container { position: relative; width: 52px; height: 52px; }
 
-/* Phase tabs */
-.phase-tabs {
-display: flex;
-gap: 0;
-overflow-x: auto;
-scrollbar-width: none;
--ms-overflow-style: none;
-padding-bottom: 1px;
-}
-.phase-tabs::-webkit-scrollbar { display: none; }
-.tab-btn {
-padding: 8px 14px;
-border: none;
-border-bottom: 3px solid transparent;
-background: none;
-font-family: ‘Nunito’, sans-serif;
-font-size: 12px;
-font-weight: 700;
-color: var(–muted);
-cursor: pointer;
-white-space: nowrap;
-transition: all 0.15s;
-letter-spacing: 0.02em;
-}
-.tab-btn.active {
-color: var(–coral);
-border-bottom-color: var(–coral);
-}
+  /* Phase tabs */
+  .phase-tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 1px;
+  }
+  .phase-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    padding: 8px 14px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+  .tab-btn.active {
+    color: var(--coral);
+    border-bottom-color: var(--coral);
+  }
 
-/* ── STATS BAR ── */
-.stats-bar {
-max-width: 680px;
-margin: 16px auto 0;
-padding: 0 16px;
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 10px;
-}
-.stat-card {
-background: var(–white);
-border: 1.5px solid var(–border);
-border-radius: 14px;
-padding: 12px;
-text-align: center;
-}
-.stat-num {
-font-size: 26px;
-font-weight: 900;
-color: var(–dark);
-font-family: ‘Fraunces’, serif;
-}
-.stat-lbl {
-font-size: 10px;
-font-weight: 700;
-color: var(–muted);
-text-transform: uppercase;
-letter-spacing: 0.07em;
-margin-top: 2px;
-}
+  /* ── STATS BAR ── */
+  .stats-bar {
+    max-width: 680px;
+    margin: 16px auto 0;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--dark);
+    font-family: 'Fraunces', serif;
+  }
+  .stat-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-top: 2px;
+  }
 
-/* ── MAIN CONTENT ── */
-.main {
-max-width: 680px;
-margin: 0 auto;
-padding: 20px 16px 0;
-}
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px 16px 0;
+  }
 
-/* ── PHASE SECTION ── */
-.phase { display: none; }
-.phase.active { display: block; }
+  /* ── PHASE SECTION ── */
+  .phase { display: none; }
+  .phase.active { display: block; }
 
-/* Phase header */
-.phase-header {
-border-radius: 18px;
-padding: 20px 22px;
-margin-bottom: 16px;
-position: relative;
-overflow: hidden;
-}
-.phase-header::before {
-content: ‘’;
-position: absolute;
-top: -20px; right: -20px;
-width: 100px; height: 100px;
-border-radius: 50%;
-background: rgba(255,255,255,0.12);
-}
-.phase-header::after {
-content: ‘’;
-position: absolute;
-bottom: -30px; right: 30px;
-width: 70px; height: 70px;
-border-radius: 50%;
-background: rgba(255,255,255,0.08);
-}
-.phase-label {
-font-size: 10px;
-font-weight: 800;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: rgba(255,255,255,0.7);
-margin-bottom: 4px;
-}
-.phase-title {
-font-family: ‘Fraunces’, serif;
-font-size: 20px;
-font-weight: 700;
-color: #fff;
-line-height: 1.2;
-margin-bottom: 4px;
-}
-.phase-machine {
-font-size: 12px;
-font-weight: 600;
-color: rgba(255,255,255,0.75);
-margin-bottom: 14px;
-}
-.phase-progress-wrap {
-background: rgba(255,255,255,0.25);
-border-radius: 99px;
-height: 5px;
-}
-.phase-progress-bar {
-height: 5px;
-border-radius: 99px;
-background: rgba(255,255,255,0.9);
-transition: width 0.35s ease;
-min-width: 5px;
-}
-.phase-count {
-position: absolute;
-top: 20px; right: 22px;
-font-size: 13px;
-font-weight: 800;
-color: rgba(255,255,255,0.85);
-background: rgba(255,255,255,0.18);
-padding: 4px 12px;
-border-radius: 99px;
-}
+  /* Phase header */
+  .phase-header {
+    border-radius: 18px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .phase-header::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .phase-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: 30px;
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .phase-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 4px;
+  }
+  .phase-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .phase-machine {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 14px;
+  }
+  .phase-progress-wrap {
+    background: rgba(255,255,255,0.25);
+    border-radius: 99px;
+    height: 5px;
+  }
+  .phase-progress-bar {
+    height: 5px;
+    border-radius: 99px;
+    background: rgba(255,255,255,0.9);
+    transition: width 0.35s ease;
+    min-width: 5px;
+  }
+  .phase-count {
+    position: absolute;
+    top: 20px; right: 22px;
+    font-size: 13px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.18);
+    padding: 4px 12px;
+    border-radius: 99px;
+  }
 
-/* ── SECTION WITHIN PHASE ── */
-.section-title {
-font-size: 11px;
-font-weight: 800;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: var(–muted);
-margin: 24px 0 8px 4px;
-}
+  /* ── SECTION WITHIN PHASE ── */
+  .section-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 24px 0 8px 4px;
+  }
 
-/* ── ITEM CARD ── */
-.item {
-display: flex;
-align-items: flex-start;
-gap: 12px;
-padding: 12px 14px;
-background: var(–white);
-border: 1.5px solid var(–border);
-border-radius: 14px;
-margin-bottom: 8px;
-cursor: pointer;
-transition: all 0.15s;
--webkit-tap-highlight-color: transparent;
-}
-.item:hover { border-color: var(–coral); background: #fffaf8; }
-.item:active { transform: scale(0.98); }
-.item.done {
-background: #fafafa;
-border-color: #ede8e4;
-opacity: 0.65;
-}
-.item.done .item-title { text-decoration: line-through; color: var(–muted); }
+  /* ── ITEM CARD ── */
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .item:hover { border-color: var(--coral); background: #fffaf8; }
+  .item:active { transform: scale(0.98); }
+  .item.done {
+    background: #fafafa;
+    border-color: #ede8e4;
+    opacity: 0.65;
+  }
+  .item.done .item-title { text-decoration: line-through; color: var(--muted); }
 
-.checkbox {
-width: 22px;
-height: 22px;
-border-radius: 6px;
-border: 2px solid var(–border);
-flex-shrink: 0;
-margin-top: 1px;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.15s;
-background: var(–white);
-}
-.checkbox svg { display: none; }
-.checkbox.checked { border-color: transparent; }
-.checkbox.checked svg { display: block; }
+  .checkbox {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    background: var(--white);
+  }
+  .checkbox svg { display: none; }
+  .checkbox.checked { border-color: transparent; }
+  .checkbox.checked svg { display: block; }
 
-.item-body { flex: 1; min-width: 0; }
-.item-title {
-font-size: 14px;
-font-weight: 700;
-color: var(–dark);
-line-height: 1.4;
-}
-.item-sub {
-font-size: 12px;
-font-weight: 600;
-color: var(–muted);
-margin-top: 3px;
-line-height: 1.5;
-}
-.item-code {
-font-family: ‘Courier New’, monospace;
-font-size: 11px;
-background: #f0ece8;
-color: var(–mid);
-padding: 5px 8px;
-border-radius: 6px;
-margin-top: 6px;
-display: block;
-word-break: break-all;
-}
-.item-badge {
-font-size: 10px;
-font-weight: 800;
-padding: 2px 8px;
-border-radius: 99px;
-flex-shrink: 0;
-margin-top: 3px;
-letter-spacing: 0.03em;
-}
+  .item-body { flex: 1; min-width: 0; }
+  .item-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+  .item-sub {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+  .item-code {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    background: #f0ece8;
+    color: var(--mid);
+    padding: 5px 8px;
+    border-radius: 6px;
+    margin-top: 6px;
+    display: block;
+    word-break: break-all;
+  }
+  .item-badge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 99px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
 
-/* ── NAV BUTTONS ── */
-.nav-row {
-display: flex;
-gap: 10px;
-margin-top: 24px;
-}
-.nav-btn {
-flex: 1;
-padding: 14px;
-border-radius: 14px;
-border: none;
-font-family: ‘Nunito’, sans-serif;
-font-size: 14px;
-font-weight: 800;
-cursor: pointer;
-transition: all 0.15s;
-}
-.nav-btn:active { transform: scale(0.97); }
-.btn-prev { background: var(–border); color: var(–mid); }
-.btn-next { background: var(–coral); color: #fff; }
-.btn-next:hover { background: var(–coral-dark); }
+  /* ── NAV BUTTONS ── */
+  .nav-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .nav-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 14px;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .nav-btn:active { transform: scale(0.97); }
+  .btn-prev { background: var(--border); color: var(--mid); }
+  .btn-next { background: var(--coral); color: #fff; }
+  .btn-next:hover { background: var(--coral-dark); }
 
-/* ── RESET ── */
-.reset-wrap {
-text-align: center;
-margin-top: 20px;
-}
-.reset-link {
-font-size: 12px;
-color: var(–muted);
-cursor: pointer;
-text-decoration: underline;
-font-weight: 600;
-background: none;
-border: none;
-font-family: ‘Nunito’, sans-serif;
-}
-.reset-link:hover { color: var(–coral); }
+  /* ── RESET ── */
+  .reset-wrap {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .reset-link {
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 600;
+    background: none;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+  }
+  .reset-link:hover { color: var(--coral); }
 
-/* ── COMPLETION BANNER ── */
-.complete-banner {
-background: var(–green-light);
-border: 1.5px solid #a3e4c0;
-border-radius: 18px;
-padding: 24px;
-text-align: center;
-margin-bottom: 20px;
-display: none;
-}
-.complete-banner.show { display: block; }
-.complete-banner h2 {
-font-family: ‘Fraunces’, serif;
-font-size: 22px;
-color: var(–green);
-margin-bottom: 6px;
-}
-.complete-banner p { font-size: 14px; color: var(–green); font-weight: 600; }
+  /* ── COMPLETION BANNER ── */
+  .complete-banner {
+    background: var(--green-light);
+    border: 1.5px solid #a3e4c0;
+    border-radius: 18px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: none;
+  }
+  .complete-banner.show { display: block; }
+  .complete-banner h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .complete-banner p { font-size: 14px; color: var(--green); font-weight: 600; }
 
-@media (prefers-color-scheme: dark) {
-:root {
-–cream: #1a1208;
-–dark: #f5ede5;
-–mid: #c4a888;
-–muted: #8a7060;
-–border: #3a2818;
-–white: #241810;
-}
-.item:hover { background: #2a1e14; }
-.item.done { background: #1e1410; }
-.item-code { background: #2a1e14; color: #c4a888; }
-.stat-card { background: #241810; }
-.checkbox { background: #241810; }
-.site-header { background: #241810; }
-}
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cream: #1a1208;
+      --dark: #f5ede5;
+      --mid: #c4a888;
+      --muted: #8a7060;
+      --border: #3a2818;
+      --white: #241810;
+    }
+    .item:hover { background: #2a1e14; }
+    .item.done { background: #1e1410; }
+    .item-code { background: #2a1e14; color: #c4a888; }
+    .stat-card { background: #241810; }
+    .checkbox { background: #241810; }
+    .site-header { background: #241810; }
+  }
 </style>
-
 </head>
 <body>
 
@@ -420,8 +418,8 @@ margin-bottom: 6px;
   <div class="header-inner">
     <div class="header-top">
       <div class="header-title">
-        <h1>🐻 KumaStickers</h1>
-        <p>Complete launch guide · April 2026</p>
+        <h1>🐻 Kawaii Supply</h1>
+        <p>Yumemachi universe · Complete launch guide · 2026</p>
       </div>
       <div class="progress-ring-wrap">
         <div class="ring-container">
@@ -468,10 +466,23 @@ const PHASES = [
       {
         title: "Hugging Face — training image host",
         items: [
-          { t: "Create Hugging Face account", s: "huggingface.co → Sign Up → free account", badge: null },
-          { t: "Create new private dataset", s: "Profile → New Dataset → name it 'kuma-training' → Private", badge: null },
-          { t: "Upload kuma_training_images.zip", s: "Add File → Upload → wait for processing", badge: null },
-          { t: "Copy the direct download URL", s: "Click the file → copy download URL — you will paste this into Replicate", code: "https://huggingface.co/datasets/YOUR_NAME/kuma-training/resolve/main/kuma_training_images.zip" },
+          { t: "Go to huggingface.co and click Sign Up", s: "Top right corner of the page. Free account — no credit card needed.", badge: null },
+          { t: "Enter your username, email, and password", s: "Pick a username you are okay with being public — it appears in your dataset URL. Something like jaronwatson or kumastickers works.", badge: null },
+          { t: "Verify your email address", s: "Hugging Face sends a confirmation email — click the link before continuing.", badge: null },
+          { t: "Click your profile picture (top right) → New Dataset", s: "This creates a storage space for your training images.", badge: null },
+          { t: "Fill in the dataset details", s: "Dataset name: kuma-training. Visibility: Private — this keeps your designs off the public internet.", badge: "important" },
+          { t: "Click Create dataset", s: "You will land on the empty dataset page.", badge: null },
+          { t: "Click the Files tab at the top of the dataset page", s: "This is where you upload your zip file.", badge: null },
+          { t: "Click Add file → Upload files", s: "A file upload area appears.", badge: null },
+          { t: "Drag kuma_training_images.zip into the upload area", s: "Or click to browse and select the file. The zip is in your downloads from this conversation — 3.1MB, uploads in under 30 seconds.", badge: null },
+          { t: "Wait for the upload progress bar to reach 100%", s: "Do not close the tab until it fully completes.", badge: null },
+          { t: "Click Commit changes to main (green button at bottom)", s: "This saves the upload. Without clicking this the file is not saved — easy to miss.", badge: "important" },
+          { t: "Verify the file appears in the Files tab", s: "You should see kuma_training_images.zip listed with its file size. If it is not there the commit did not go through — try again.", badge: null },
+          { t: "Click on kuma_training_images.zip to open the file detail page", s: "", badge: null },
+          { t: "Copy the download URL from the address bar", s: "The URL should follow this exact format:", code: "https://huggingface.co/datasets/YOUR_USERNAME/kuma-training/resolve/main/kuma_training_images.zip" },
+          { t: "Replace YOUR_USERNAME with your actual Hugging Face username", s: "Example — if your username is jaronwatson:", code: "https://huggingface.co/datasets/jaronwatson/kuma-training/resolve/main/kuma_training_images.zip" },
+          { t: "Test the URL by pasting it into a browser tab", s: "It should start downloading the zip file. If you get a 404 error the URL is wrong or the file was not committed correctly.", badge: "important" },
+          { t: "Save this URL in Notes right now", s: "You will paste this exact URL into Replicate in Phase 4. Label it clearly: HuggingFace Training URL", badge: "critical" },
         ]
       },
       {
@@ -791,6 +802,94 @@ const PHASES = [
       }
     ]
   }
+  ,
+  {
+    id: "website",
+    label: "Phase 8",
+    title: "Build kawaii-supply.com",
+    machine: "Mac Mini 24GB — WordPress on Hostinger",
+    color: "#E8785A",
+    sections: [
+      {
+        title: "Domain and hosting setup",
+        items: [
+          { t: "Confirm kawaii-supply.com is active in your Hostinger account", s: "Log in at hostinger.com → Domains — verify the domain shows as active", badge: null },
+          { t: "Create a new WordPress site on Hostinger for kawaii-supply.com", s: "Hostinger dashboard → Websites → Add website → WordPress → assign kawaii-supply.com", badge: null },
+          { t: "Install Astra theme", s: "WordPress dashboard → Appearance → Themes → search Astra → Install → Activate (same as watson26.com)", badge: null },
+          { t: "Install Elementor page builder", s: "Plugins → Add New → search Elementor → Install → Activate", badge: null },
+          { t: "Install a contact form plugin", s: "WPForms Lite or Contact Form 7 — free and reliable", badge: null },
+        ]
+      },
+      {
+        title: "Brand setup in WordPress",
+        items: [
+          { t: "Upload Kuma as the site logo", s: "Appearance → Customize → Site Identity → upload a Kuma PNG as logo", badge: null },
+          { t: "Set brand colors in Astra", s: "Appearance → Customize → Global → Colors — set primary to #E8785A (coral) and background to #FDF8F5 (cream)", badge: null },
+          { t: "Set font to Nunito or similar rounded font", s: "Appearance → Customize → Global → Typography — matches your sticker aesthetic", badge: null },
+          { t: "Create a favicon using Kuma", s: "A small square Kuma face PNG — Appearance → Customize → Site Identity → Site Icon", badge: null },
+        ]
+      },
+      {
+        title: "Build the homepage",
+        items: [
+          { t: "Create the hero section — Kuma and Kobi intro", s: "Top of homepage: brand name, tagline, and a placeholder for the Yumemachi intro video", badge: "important" },
+          { t: "Add tagline text", s: "Something like: Art from another world. Stickers from Yumemachi.", badge: null },
+          { t: "Add Featured Drops section", s: "Grid of your latest sticker designs with links to Etsy listings", badge: null },
+          { t: "Add Tano Deals section", s: "Highlighted section showing current bundle deals — Tano graphic, deal text, link to Etsy packs", badge: null },
+          { t: "Add Characters section preview", s: "Three cards: Kuma, Kobi, Tano — each with a brief description and link to their character page", badge: null },
+          { t: "Add email signup section", s: "Simple form: name + email — label it 'Get notified when Yumemachi drops something new'", badge: null },
+        ]
+      },
+      {
+        title: "Build the Characters pages",
+        items: [
+          { t: "Create a Characters landing page", s: "Grid of all characters — Kuma, Kobi, Tano + coming soon cards for future characters", badge: null },
+          { t: "Build Kuma character page", s: "Kuma's story, personality, his sticker collection, link to Etsy shop filtered by Kuma", badge: null },
+          { t: "Build Kobi character page", s: "Kobi's story, the streetwear vibe, coming soon sticker previews", badge: null },
+          { t: "Build Tano character page", s: "Tano's story, his deals, link to bundle packs — make it feel like his little corner of the internet", badge: null },
+          { t: "Add Coming Soon cards for Suki, Mochi, Kiko, Shiro, Haru", s: "Tease future characters — builds anticipation and follows", badge: null },
+        ]
+      },
+      {
+        title: "Build the Shop page",
+        items: [
+          { t: "Create Shop page with links to all Etsy listings", s: "Organized by character (Kuma section, Kobi section etc.) and by pack type", badge: null },
+          { t: "Embed or link individual sticker listings", s: "Use Etsy listing images — link each directly to the Etsy product page", badge: null },
+          { t: "Add a Packs section", s: "All 6 current packs with collage mockup images and direct Etsy links", badge: null },
+          { t: "Add Tano Deals subsection", s: "Current bundles and any active discount codes", badge: null },
+        ]
+      },
+      {
+        title: "Build remaining pages",
+        items: [
+          { t: "Create About page", s: "Jay's story, the Yumemachi world concept, the brand vision — make it personal and real", badge: null },
+          { t: "Create New Drops page", s: "Blog-style page — each new collection is a post framed as a story from Yumemachi", badge: null },
+          { t: "Create Contact page", s: "Simple contact form — for wholesale, collabs, or general questions", badge: null },
+          { t: "Add privacy policy and terms pages", s: "Required for GDPR and Etsy compliance — use a free generator like Termly", badge: null },
+        ]
+      },
+      {
+        title: "SEO and launch",
+        items: [
+          { t: "Install Rank Math or Yoast SEO plugin", s: "Free version is plenty — helps Google find your site", badge: null },
+          { t: "Set page titles and meta descriptions", s: "Home: Kawaii Supply — Stickers from Yumemachi | Cute kawaii animal stickers", badge: null },
+          { t: "Submit site to Google Search Console", s: "search.google.com/search-console — verify ownership and submit sitemap", badge: null },
+          { t: "Add kawaii-supply.com to your Etsy shop announcement", s: "Etsy → Shop Manager → Info & Appearance — add your website URL", badge: null },
+          { t: "Add kawaii-supply.com to Instagram and TikTok bio", s: "Link in bio — replace with your actual domain", badge: null },
+          { t: "Update Etsy developer app website URL to kawaii-supply.com", s: "etsy.com/developers → your app → edit → update the Website URL field", badge: null },
+        ]
+      },
+      {
+        title: "Intro video (Yumemachi opening)",
+        items: [
+          { t: "Create a short 15-30 second looping video for the homepage", s: "Kuma and Kobi in the shop, showing off the latest drop — this is the first thing visitors see", badge: "important" },
+          { t: "Options for creating the video", s: "Use your pipeline's MoviePy video generation as a base, or create in Procreate animation, or use Canva with your sticker PNGs", badge: null },
+          { t: "Keep it simple for v1", s: "Even a clean slideshow of sticker mockups with the brand music is enough to start — upgrade later", badge: null },
+          { t: "Add the video to the homepage hero section", s: "Elementor → Video widget or Background Video option on the hero section", badge: null },
+        ]
+      }
+    ]
+  }
 ];
 
 // ── STATE ──────────────────────────────────────────────────────────────────
@@ -940,6 +1039,5 @@ function render(){
 load();
 render();
 </script>
-
 </body>
 </html>
